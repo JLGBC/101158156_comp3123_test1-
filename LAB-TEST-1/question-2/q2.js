@@ -5,7 +5,7 @@ const resolvedPromise = () => {
     
     },500)
 }
-const resolvedException = ()=>{
+const rejectedException = ()=>{
     setTimeout(()=>{
         try{
             throw new Error('error: delayed exception!');
@@ -16,5 +16,11 @@ const resolvedException = ()=>{
     },500)
 }
 
-resolvedPromise()
-resolvedException()
+
+async function asyncPromise() {
+    const result = await resolvedPromise()
+    const error = await rejectedException()
+    return result, error;
+}
+
+return asyncPromise()
